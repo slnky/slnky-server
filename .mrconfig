@@ -1,0 +1,13 @@
+# THIS FILE IS UPDATED WITH A COMMAND
+# update this file with:
+# > rake mr:config
+#
+# to setup use of mrconfig:
+# get the mr tool with:
+# > brew install mr
+#
+# then, create the ~/.mrconfig and ~/.mrsetup files
+# > rake mr:setup
+# *** if the files exist, it will print the output instead
+[../lambda-broker]
+checkout = git clone 'git@github.com:realgravity/lambda-broker' 'lambda-broker'
