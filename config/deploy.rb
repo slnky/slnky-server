@@ -1,12 +1,14 @@
-set :application, 'teejay'
-set :repo_url, 'git@github.com:shawncatz/teejay'
+set :application, 'slnky'
+set :repo_url, 'git@github.com:shawncatz/slnky-server'
+
+rubyversion = File.read('.ruby-version').chomp
+rubygemset = File.read('.ruby-gemset').chomp
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, "#{ENV['DEPLOY_DIR']}/#{fetch(:application)}#{fetch(:stage) == 'staging' ? '-stg' : ''}"
 # set :scm, :git
 
-# set :format, :pretty
 # set :log_level, :debug
 # set :pty, true
 
@@ -19,16 +21,16 @@ set :keep_releases, 5
 set :migration_role, 'app'
 set :conditionally_migrate, true
 
-set :rvm_ruby_version, "ruby-2.2.1@teejay"      # Defaults to: 'default'
+set :rvm_ruby_version, "#{rubyversion}@#{rubygemset}"      # Defaults to: 'default'
 
-set :nginx_server_name, 'hooks.ulive.sh'
+set :nginx_server_name, 'slnky.ulive.sh'
 set :unicorn_logrotate_enabled, true
 # ignore this if you do not need SSL
 set :nginx_use_ssl, true
 set :nginx_upload_local_cert, false # already installed on server
 # TODO: get ulive.sh ssl cert
-set :nginx_ssl_cert, 'wildcard.rgops.com.combined.crt'
-set :nginx_ssl_cert_key, 'wildcard.rgops.com.key'
+set :nginx_ssl_cert, 'wildcard.ulive.sh.combined.crt'
+set :nginx_ssl_cert_key, 'wildcard.ulive.sh.key'
 
 namespace :dotenv do
   desc 'push env file to server'
@@ -40,7 +42,6 @@ namespace :dotenv do
 end
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do

@@ -65,6 +65,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem "airbrussh", :require => false
 end
 
 
