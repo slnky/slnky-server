@@ -1,4 +1,4 @@
-class Hooks::GithubController < ActionController::Base
+class Hooks::GithubController < Hooks::BaseController
   # POST /hooks/github
   def create
     head :ok

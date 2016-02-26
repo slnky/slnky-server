@@ -1,7 +1,14 @@
-class Hooks::AwsController < ActionController::Base
+class Hooks::AwsController < Hooks::BaseController
   # POST /hooks/aws
   def create
+    message = {
+        name: "#{params['source']}.#{params['detail']['state']}",
+        payload: params
+    }
+    publish('events', message)
     head :ok
+  rescue => e
+    render json: { error: e.message }, status: :bad_request
   end
 end
 

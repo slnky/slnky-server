@@ -68,5 +68,5 @@ group :development do
   gem "airbrussh", :require => false
 end
 
-
 gem 'dotenv-rails'
+gem 'bunny'
