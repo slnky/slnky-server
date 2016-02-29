@@ -38,7 +38,10 @@ GEM
       tzinfo (~> 1.1)
     airbrussh (0.8.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    amq-protocol (2.0.1)
+    amq-protocol (1.9.2)
+    amqp (1.5.1)
+      amq-protocol (~> 1.9)
+      eventmachine
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -53,8 +56,6 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
-    bunny (2.2.2)
-      amq-protocol (>= 2.0.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -241,9 +242,9 @@ PLATFORMS
 
 DEPENDENCIES
   airbrussh
+  amqp
   better_errors
   bootstrap-sass
-  bunny
   capistrano (~> 3.4.0)
   capistrano-bundler
   capistrano-rails (~> 1.1.6)

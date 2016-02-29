@@ -55,10 +55,10 @@ group :development do
 
   gem 'better_errors'
   gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rvm', '~> 0.1.2'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'capistrano-rails-console', '~> 1.0.2'
-  gem 'capistrano-rvm', '~> 0.1.2'
   gem 'capistrano-unicorn-nginx', '~> 3.4.0'
   gem 'foreman'
   gem 'html2haml'
@@ -69,4 +69,6 @@ group :development do
 end
 
 gem 'dotenv-rails'
-gem 'bunny'
+# gem 'bunny'
+gem 'amqp'
+# gem 'slnky', github: 'shawncatz/slnky', branch: 'master'
