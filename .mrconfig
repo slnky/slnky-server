@@ -14,7 +14,7 @@
 checkout = git clone 'git@github.com:realgravity/lambda-broker' 'lambda-broker'
 
 [../slnky-cli]
-checkout = git clone 'git@github.com:shawncatz/slnky-service' 'slnky-cli'
+checkout = git clone 'git@github.com:shawncatz/slnky-cli' 'slnky-cli'
 
 [../slnky-logger]
 checkout = git clone 'git@github.com:shawncatz/slnky-logger' 'slnky-logger'
