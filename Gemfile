@@ -71,4 +71,4 @@ end
 gem 'dotenv-rails'
 # gem 'bunny'
 gem 'amqp'
-# gem 'slnky', github: 'shawncatz/slnky', branch: 'master'
+gem 'slnky'#, github: 'shawncatz/slnky', branch: 'master'
