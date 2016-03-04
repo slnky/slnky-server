@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :configs
+  scope defaults: {format: 'json'} do
+    resources :configs
+  end
 
   namespace :hooks do
     post :github, to: 'github#create'
