@@ -32,16 +32,14 @@ set :nginx_upload_local_cert, false # already installed on server
 set :nginx_ssl_cert, 'wildcard.ulive.sh.combined.crt'
 set :nginx_ssl_cert_key, 'wildcard.ulive.sh.key'
 
-namespace :dotenv do
+namespace :deploy do
   desc 'push env file to server'
-  task :push do
+  task :dotenv do
     on roles(:app) do
       upload! File.expand_path("./.env"), "#{shared_path}/.env"
     end
   end
-end
 
-namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
