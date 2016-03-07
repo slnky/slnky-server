@@ -5,12 +5,17 @@ class ConfigsController < ApplicationController
 
   def show
     name = params['id']
-    secrets = Rails.application.secrets
     config = {
-        rabbit: secrets.rabbit,
-        base: secrets.base,
+        rabbit: secrets['rabbit'], # services always need to know rabbit config
+        common: secrets['common'], # shared config
     }
-    config[name] = secrets.send(name) if secrets.send(name)
+    config[name] = secrets[name] if secrets[name]
     render json: config
+  end
+
+  protected
+
+  def secrets
+    Rails.application.secrets
   end
 end
