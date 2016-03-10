@@ -24,10 +24,10 @@ namespace :mr do
 # > rake mr:setup
 # *** if the files exist, it will print the output instead
     EOF
-    list = Dir["#{dir}/slnky-*"] + ["#{dir}/lambda-broker"]
+    list = Dir["#{dir}/slnky-*"] + ["#{dir}/lambda-broker"] - ["#{dir}/slnky-server"]
     list.sort.each do |d|
       n = d.split('/').last
-      r = `cd #{d} && git remote -v | head -1 | awk '{print $2}'`.chomp
+      r = `cd #{d} && git remote -v | head -1 | awk '{print $2}'`.chomp.gsub(/\.git$/, '')
       puts "- #{n}: #{d}: #{r}"
       cfg << "[../#{n}]\n"
       cfg << "checkout = git clone '#{r}' '#{n}'\n"
