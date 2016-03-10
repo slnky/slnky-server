@@ -19,7 +19,7 @@ checkout = git clone 'git@github.com:shawncatz/slnky-chef.git' 'slnky-chef'
 checkout = git clone 'git@github.com:shawncatz/slnky-cli.git' 'slnky-cli'
 
 [../slnky-hipchat]
-checkout = git clone '' 'slnky-hipchat'
+checkout = git clone 'git@github.com:shawncatz/slnky-hipchat.git' 'slnky-hipchat'
 
 [../slnky-logger]
 checkout = git clone 'git@github.com:shawncatz/slnky-logger.git' 'slnky-logger'
