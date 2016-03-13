@@ -9,21 +9,21 @@
 # then, create the ~/.mrconfig and ~/.mrsetup files
 # > rake mr:setup
 # *** if the files exist, it will print the output instead
-[../lambda-broker]
-checkout = git clone 'git@github.com:realgravity/lambda-broker' 'lambda-broker'
+[../slnky-broker-lambda]
+checkout = git clone 'git@github.com:slnky/slnky-broker-lambda' 'slnky-broker-lambda'
 
 [../slnky-chef]
-checkout = git clone 'git@github.com:shawncatz/slnky-chef' 'slnky-chef'
+checkout = git clone 'git@github.com:slnky/slnky-chef' 'slnky-chef'
 
 [../slnky-cli]
-checkout = git clone 'git@github.com:shawncatz/slnky-cli' 'slnky-cli'
+checkout = git clone 'git@github.com:slnky/slnky-cli' 'slnky-cli'
 
 [../slnky-hipchat]
-checkout = git clone 'git@github.com:shawncatz/slnky-hipchat' 'slnky-hipchat'
+checkout = git clone 'git@github.com:slnky/slnky-hipchat' 'slnky-hipchat'
 
 [../slnky-logger]
-checkout = git clone 'git@github.com:shawncatz/slnky-logger' 'slnky-logger'
+checkout = git clone 'git@github.com:slnky/slnky-logger' 'slnky-logger'
 
 [../slnky-route53]
-checkout = git clone 'git@github.com:realgravity/slnky-route53' 'slnky-route53'
+checkout = git clone 'git@github.com:slnky/slnky-route53' 'slnky-route53'
 
