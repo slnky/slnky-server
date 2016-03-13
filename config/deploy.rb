@@ -1,4 +1,4 @@
-set :application, 'slnky-server'
+set :application, 'slnky'
 set :repo_url, 'git@github.com:slnky/slnky-server'
 
 rubyversion = File.read('.ruby-version').chomp
