@@ -1,5 +1,5 @@
-set :application, 'slnky'
-set :repo_url, 'git@github.com:shawncatz/slnky-server'
+set :application, 'slnky-server'
+set :repo_url, 'git@github.com:slnky/slnky-server'
 
 rubyversion = File.read('.ruby-version').chomp
 rubygemset = File.read('.ruby-gemset').chomp

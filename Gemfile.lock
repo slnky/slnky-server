@@ -196,7 +196,7 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    slnky (0.2.0)
+    slnky (0.4.0)
       activesupport (~> 4.2.5.1)
       amqp (~> 1.5.1)
       dotenv (~> 2.1.0)
@@ -271,7 +271,7 @@ DEPENDENCIES
   rails_layout
   sass-rails (~> 5.0)
   simple_form
-  slnky (~> 0.2.0)
+  slnky (~> 0.4.0)
   spring
   spring-commands-rspec
   therubyracer
