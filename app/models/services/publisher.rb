@@ -5,8 +5,8 @@ class Services::Publisher
       running = EventMachine.reactor_running?
       # http://rubyamqp.info/articles/working_with_exchanges/#toc_27
       EventMachine.run do
-        @host ||= Rails.application.secrets.rabbit['host']
-        @port ||= Rails.application.secrets.rabbit['port']
+        @host ||= Rails.application.secrets.common['rabbit']['host']
+        @port ||= Rails.application.secrets.common['rabbit']['port']
         connection = AMQP.connect(host: @host, port: @port)
         channel    = AMQP::Channel.new(connection)
         x = channel.fanout("slnky.#{exchange}")

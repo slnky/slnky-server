@@ -6,7 +6,6 @@ class ConfigsController < ApplicationController
   def show
     name = params['id']
     config = secrets['common']
-    config['rabbit'] = secrets['rabbit']
     config[name] = secrets[name] if secrets[name]
     render json: config
   end
