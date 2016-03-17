@@ -71,4 +71,4 @@ end
 gem 'dotenv-rails'
 # gem 'bunny'
 gem 'amqp'
-gem 'slnky', '~> 0.4.0'
+gem 'slnky', '~> 0.6.1'
