@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   namespace :hooks do
     post :github, to: 'github#create'
     post :aws, to: 'aws#create'
+    post :notify, to: 'notify#create'
   end
 end
