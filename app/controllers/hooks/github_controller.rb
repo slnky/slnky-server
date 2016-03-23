@@ -1,7 +1,46 @@
 class Hooks::GithubController < Hooks::BaseController
   # POST /hooks/github
   def create
+    event = request.headers['X-Github-Event']
+    payload = request.request_parameters
+    message = {
+        name: event_name(event||'empty'),
+        payload: payload
+    }
+    publish('events', message)
     head :ok
+  end
+
+  private
+
+  def event_table
+    @table ||= {
+        commit_comment: 'github.commit.comment',
+        create: 'github.branch.create', # branch or tag
+        delete: 'github.branch.delete', # branch or tag
+        deployment: 'github.deploy.create',
+        deployment_status: 'github.deploy.status',
+        fork: 'github.repo.fork',
+        gollum: 'github.wiki.update',
+        issue_comment: 'github.issue.comment',
+        issues: 'github.issues.update',
+        member: 'github.member.added',
+        membership: 'github.member.team', # organization hooks only
+        page_build: 'github.page.build',
+        public: 'github.repo.public',
+        pull_request_review_comment: 'github.pr.comment',
+        pull_request: 'github.pr.update',
+        push: 'github.repo.push', # default event
+        repository: 'github.repo.create', # organization hooks only
+        release: 'github.release.create',
+        status: 'github.repo.status',
+        team_add: 'github.team.update',
+        watch: 'github.repo.watch'
+    }
+  end
+
+  def event_name(event)
+    event_table[event.to_sym] || "github.unknown.#{event}"
   end
 end
 
