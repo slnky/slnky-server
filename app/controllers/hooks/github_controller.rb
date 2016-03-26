@@ -14,6 +14,8 @@ class Hooks::GithubController < Hooks::BaseController
   private
 
   def event_table
+    # https://developer.github.com/webhooks/
+    # https://developer.github.com/v3/activity/events/types/
     @table ||= {
         commit_comment: 'github.commit.comment',
         create: 'github.branch.create', # branch or tag
@@ -23,7 +25,7 @@ class Hooks::GithubController < Hooks::BaseController
         fork: 'github.repo.fork',
         gollum: 'github.wiki.update',
         issue_comment: 'github.issue.comment',
-        issues: 'github.issues.update',
+        issues: 'github.issue.update',
         member: 'github.member.added',
         membership: 'github.member.team', # organization hooks only
         page_build: 'github.page.build',
