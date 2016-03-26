@@ -1,9 +1,6 @@
 set :application, 'slnky'
 set :repo_url, 'git@github.com:slnky/slnky-server'
 
-rubyversion = File.read('.ruby-version').chomp
-rubygemset = File.read('.ruby-gemset').chomp
-
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, "#{ENV['DEPLOY_DIR']}/#{fetch(:application)}#{fetch(:stage) == 'staging' ? '-stg' : ''}"
@@ -21,9 +18,9 @@ set :keep_releases, 5
 set :migration_role, 'app'
 set :conditionally_migrate, true
 
-set :rvm_ruby_version, "#{rubyversion}@#{rubygemset}"      # Defaults to: 'default'
+set :rvm_ruby_version, File.read('.ruby-version').chomp      # Defaults to: 'default'
 
-set :nginx_server_name, 'slnky.ulive.sh'
+set :nginx_server_name, 'slnky.ulive.sh slnky-pub.ulive.sh'
 set :unicorn_logrotate_enabled, true
 # ignore this if you do not need SSL
 set :nginx_use_ssl, true
