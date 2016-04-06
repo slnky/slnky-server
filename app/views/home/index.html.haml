@@ -1,3 +1,10 @@
 %p
   It's working. SLNKY!
-
+%p
+  %ul
+    - @heartbeats.each do |name, time|
+      %li
+        %strong
+          = name
+        %span
+          = time
