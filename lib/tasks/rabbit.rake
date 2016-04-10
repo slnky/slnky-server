@@ -20,4 +20,23 @@ namespace :rabbit do
 
     conn.close
   end
+
+  desc 'remove queues and exchanges'
+  task :cleanup => :environment do
+    base = "http://guest:guest@localhost:15672/api"
+    queues = JSON.parse(RestClient.get("#{base}/queues/", accept: :json))
+    queues.each do |q|
+      url = "#{base}/%2f/#{URI.encode(q['name'])}"
+      puts "queue: #{q['name'].inspect}"
+      RestClient.delete(url)
+    end
+
+    exchanges = JSON.parse(RestClient.get("#{base}/exchanges/", accept: :json))
+    exchanges.each do |x|
+      next if !x['name'] || x['name'] == '' || x['name'] =~ /^amq/
+      puts "exchange: #{x['name'].inspect}"
+      url = "#{base}/exchanges/%2f/#{URI.encode(x['name'])}"
+      RestClient.delete(url)
+    end
+  end
 end
