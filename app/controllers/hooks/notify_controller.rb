@@ -10,6 +10,7 @@ class Hooks::NotifyController < Hooks::BaseController
     publish('events', message)
     head :ok
   rescue => e
+    puts "ERROR: #{e.message} at #{e.backtrace.first}"
     render json: { error: e.message, backtrace: e.backtrace }, status: :bad_request
   end
 end
