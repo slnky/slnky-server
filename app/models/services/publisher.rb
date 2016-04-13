@@ -7,7 +7,11 @@ class Services::Publisher
       EventMachine.run do
         @host ||= Rails.application.secrets.common['rabbit']['host']
         @port ||= Rails.application.secrets.common['rabbit']['port']
-        connection = AMQP.connect(host: @host, port: @port)
+        @user ||= Rails.application.secrets.common['rabbit']['user']
+        @pass ||= Rails.application.secrets.common['rabbit']['pass']
+        options = { host: @host, port: @port }
+        options.merge!({username: @user, password: @pass}) if @user
+        connection = AMQP.connect(options)
         channel    = AMQP::Channel.new(connection)
         x = channel.fanout("slnky.#{exchange}")
         x.publish(Slnky::Message.new(message).to_s) do
