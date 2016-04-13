@@ -33,7 +33,7 @@ namespace :deploy do
   desc 'push env file to server'
   task :dotenv do
     on roles(:app) do
-      upload! File.expand_path("./.env"), "#{shared_path}/.env"
+      upload! File.expand_path("./deploy.env"), "#{shared_path}/.env"
     end
   end
 
