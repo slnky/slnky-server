@@ -4,7 +4,9 @@ namespace :rabbit do
     require "bunny"
     host = Rails.application.secrets.rabbit['host']
     port = Rails.application.secrets.rabbit['port']
-    conn = Bunny.new(host: host, port: port)
+    user = Rails.application.secrets.rabbit['user']
+    pass = Rails.application.secrets.rabbit['pass']
+    conn = Bunny.new(host: host, port: port, username: user, password: pass)
     conn.start
 
     ch = conn.create_channel
@@ -26,7 +28,7 @@ namespace :rabbit do
     base = "http://guest:guest@localhost:15672/api"
     queues = JSON.parse(RestClient.get("#{base}/queues/", accept: :json))
     queues.each do |q|
-      url = "#{base}/%2f/#{URI.encode(q['name'])}"
+      url = "#{base}/queues/#{CGI.escape('/')}/#{CGI.escape(q['name'])}"
       puts "queue: #{q['name'].inspect}"
       RestClient.delete(url)
     end
