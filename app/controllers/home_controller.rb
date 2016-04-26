@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @heartbeats = Heartbeats.instance.report
+    @heartbeats = Slnky.brain.hgetall(:heartbeat)
   end
 end

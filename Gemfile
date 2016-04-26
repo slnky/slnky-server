@@ -71,4 +71,5 @@ end
 gem 'dotenv-rails'
 # gem 'bunny'
 gem 'amqp'
-gem 'slnky', '~> 0.11.0'
+gem 'slnky', '~> 0.13.0'
+# gem 'slnky', path: "~/slnky/slnky-cli"
